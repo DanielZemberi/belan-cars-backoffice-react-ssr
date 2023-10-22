@@ -108,7 +108,7 @@ const AddCustomerForm = () => {
           <Button type="submit" className="w-1/2">
             Pridať
           </Button>
-        </div>{" "}
+        </div>
       </form>
     </Form>
   );
