@@ -1,5 +1,8 @@
-import "~/styles/globals.css";
+import { ThemeProvider } from "@/components/common/theme-provider";
+import "@/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+
+import { Toaster } from "@/components/ui/toaster";
 
 import { Inter } from "next/font/google";
 
@@ -22,7 +25,17 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`font-sans ${inter.variable}`}>{children}</body>
+        <body className={`font-sans ${inter.variable}`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <main>{children}</main>
+            <Toaster />
+          </ThemeProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
