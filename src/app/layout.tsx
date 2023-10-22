@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
 
 import { Inter } from "next/font/google";
+import Navigation from "@/components/common/navigaton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <Navigation />
             <main>{children}</main>
             <Toaster />
           </ThemeProvider>
