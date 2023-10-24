@@ -8,8 +8,15 @@ export default async function ListPage() {
         id: "desc",
       },
     ],
+    include: {
+      cars: {
+        include: {
+          terms: true,
+        },
+      },
+    },
   });
-
+  // console.log(customers);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">

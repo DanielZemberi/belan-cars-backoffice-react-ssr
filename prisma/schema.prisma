@@ -16,9 +16,30 @@ model Customer {
     email      String   @unique
     first_name String?
     last_name  String?
-    vin        String?
+    cars       Car[]
     createdAt  DateTime @default(now())
     updatedAt  DateTime @updatedAt
 
     @@index([email])
+}
+
+model Car {
+    id          Int      @id @default(autoincrement())
+    vin         String
+    terms       Term[]
+    customer    Customer @relation(fields: [customer_id], references: [id])
+    customer_id Int
+
+    @@index([customer_id])
+}
+
+model Term {
+    id             Int       @id @default(autoincrement())
+    term_date      DateTime
+    last_term_date DateTime?
+    type           String
+    car            Car       @relation(fields: [car_id], references: [id])
+    car_id         Int
+
+    @@index([car_id])
 }

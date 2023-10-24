@@ -52,6 +52,8 @@ const columns = [
 ];
 
 const Table: React.FC<TableProps> = ({ customers }) => {
+  // console.log("customer", customers);
+
   const table = useReactTable({
     data: customers,
     columns,

@@ -11,7 +11,7 @@ import React from "react";
 
 const Navigation: React.FC = () => {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="sticky top-0 max-w-full justify-end p-4">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/list" legacyBehavior passHref>

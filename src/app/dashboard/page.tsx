@@ -11,7 +11,7 @@ export default async function DashboardPage() {
 
   const user = await clerkClient.users.getUser(userId);
 
-  console.log("user", user);
+  // console.log("user", user);
 
   return (
     <div className="px-8 py-12 sm:py-16 md:px-20">

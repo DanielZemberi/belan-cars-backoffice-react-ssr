@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import axios, { isAxiosError } from "axios";
 import { useToast } from "@/components/ui/use-toast";
+import { onCustomerAddAction } from "./add-customer.action";
 
 export type AddCustomerFormValues = z.infer<typeof formSchema>;
 
@@ -30,26 +31,29 @@ const AddCustomerForm = () => {
     defaultValues,
   });
 
-  const onSubmit = async (values: AddCustomerFormValues) => {
-    try {
-      const res = await axios.post("/api/add-customer", values);
-      toast({
-        title: res.data.message,
-      });
-      form.reset();
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: isAxiosError(error)
-          ? error.response?.data.message
-          : "Neznama chyba",
-      });
-    }
-  };
+  // const onSubmit = async (values: AddCustomerFormValues) => {
+  //   try {
+  //     const res = await axios.post("/api/add-customer", values);    return;
+  //     toast({
+  //       title: res.data.message,
+  //     });
+  //     form.reset();
+  //   } catch (error) {
+  //     toast({
+  //       variant: "destructive",
+  //       title: isAxiosError(error)
+  //         ? error.response?.data.message
+  //         : "Neznama chyba",
+  //     });
+  //   }
+  // };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onCustomerAddAction)}
+        className="space-y-8"
+      >
         <FormField
           control={form.control}
           name="email"
